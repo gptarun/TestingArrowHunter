@@ -13,6 +13,8 @@ public class EnemyMovementScript : MonoBehaviour
     public Animator meleeAnim;
     bool rArrow = false;
     public bool isAttack = false;
+    public WallHealth wallHealth;
+    string attackedGameObject;
 
     // Use this for initialization
     void Start()
@@ -25,8 +27,33 @@ public class EnemyMovementScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        AttackAndMoveEnemy();              //This calls enemies movement.
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)     // If the entering collider is the Tower/Wall...
+    {
+        if (meleeAnim != null)
+        {
+            meleeAnim.SetBool("isAttack", true);
+        }
+        isAttack = true;
+        attackedGameObject = collision.name;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (meleeAnim != null)
+        {
+            meleeAnim.SetBool("isAttack", false);
+        }
+        isAttack = false;
+    }
+
+    private void AttackAndMoveEnemy()
+    {
         double currentSec = DateTime.Now.Second;
-        if (objName.Equals("EnemyR1(Clone)"))
+        if (objName.Equals("EnemyR1(Clone)"))               //Archer should stop while hitting an arrow.
         {
             if (currentSec % 2 == 0)
             {
@@ -37,7 +64,7 @@ public class EnemyMovementScript : MonoBehaviour
             }
             else
             {
-                rangeAnim.SetBool("rArrow", rArrow);
+                rangeAnim.SetBool("rArrow", rArrow);            // Archer keeps moving
                 if (!isAttack)
                 {
                     target.position = new Vector3(target.position.x - speed, target.position.y);
@@ -45,10 +72,11 @@ public class EnemyMovementScript : MonoBehaviour
                 else
                 {
                     target.position = new Vector3(target.position.x, target.position.y);
+                    Attack();
                 }
             }
         }
-        if (objName.Equals("EnemyM1(Clone)") || objName.Equals("EnemyM2(Clone)") || objName.Equals("EnemyM3(Clone)"))
+        else                        //All keeps moving and hitting xD. 
         {
             if (!isAttack)
             {
@@ -57,7 +85,23 @@ public class EnemyMovementScript : MonoBehaviour
             else
             {
                 target.position = new Vector3(target.position.x, target.position.y);
+                Attack();
             }
+        }
+    }
+
+    internal void DisableEffects()
+    {
+        isAttack = false;
+        //Need to write code about what will happen if enemy breaks the tower.
+    }
+
+    void Attack()
+    {
+        Debug.Log("Game object "+ attackedGameObject);
+        if (wallHealth != null)          //Need to write random archer hit logic to hit wall or anything.
+        {
+            wallHealth.TakeWallDamage(1);
         }
     }
 }

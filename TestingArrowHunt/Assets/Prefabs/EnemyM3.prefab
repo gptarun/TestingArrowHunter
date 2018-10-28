@@ -9,21 +9,21 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1551941622649712}
+  m_RootGameObject: {fileID: 1015015448034788}
   m_IsPrefabAsset: 1
---- !u!1 &1551941622649712
+--- !u!1 &1015015448034788
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4226100622215044}
-  - component: {fileID: 212233663113148294}
-  - component: {fileID: 95007161776510616}
-  - component: {fileID: 61873975004471084}
-  - component: {fileID: 114014993206653348}
-  - component: {fileID: 114271193212437326}
+  - component: {fileID: 4754854013088304}
+  - component: {fileID: 212365411756130782}
+  - component: {fileID: 95472570896681666}
+  - component: {fileID: 61164342430965462}
+  - component: {fileID: 114310833531304454}
+  - component: {fileID: 114670769253771120}
   m_Layer: 0
   m_Name: EnemyM3
   m_TagString: Untagged
@@ -31,12 +31,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4226100622215044
+--- !u!4 &4754854013088304
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1551941622649712}
+  m_GameObject: {fileID: 1015015448034788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.6, y: -0.72, z: -0.031677157}
   m_LocalScale: {x: 2.519699, y: 2.411468, z: 2.626617}
@@ -44,12 +44,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61873975004471084
+--- !u!61 &61164342430965462
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1551941622649712}
+  m_GameObject: {fileID: 1015015448034788}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -69,13 +69,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.28627723, y: 0.5257642}
   m_EdgeRadius: 0
---- !u!95 &95007161776510616
+--- !u!95 &95472570896681666
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1551941622649712}
+  m_GameObject: {fileID: 1015015448034788}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f1d8ac25503ac29438337e6b11311eef, type: 2}
@@ -87,40 +87,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114014993206653348
+--- !u!114 &114310833531304454
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1551941622649712}
+  m_GameObject: {fileID: 1015015448034788}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31b99f9639e6a534e99d8de0e8adf515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4226100622215044}
+  target: {fileID: 4754854013088304}
   rangeAnim: {fileID: 0}
-  meleeAnim: {fileID: 95007161776510616}
+  meleeAnim: {fileID: 95472570896681666}
   isAttack: 0
---- !u!114 &114271193212437326
+  wallHealth: {fileID: 114670769253771120}
+--- !u!114 &114670769253771120
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1551941622649712}
+  m_GameObject: {fileID: 1015015448034788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb9afb6b789c9c34aa48b921021266b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e55e498a5005114caf603a28974be8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 95007161776510616}
-  enemyMovement: {fileID: 114014993206653348}
---- !u!212 &212233663113148294
+  startingWallHealth: 1000
+  currentWallHealth: 0
+  wallAnim: {fileID: 0}
+  destroyedClip: {fileID: 0}
+--- !u!212 &212365411756130782
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1551941622649712}
+  m_GameObject: {fileID: 1015015448034788}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
